@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Delhi Travelling Buddy</title>
+</head>
+
+<body class="bg-amber-300">
+    <header>
+        <nav class="flex items-center justify-between p-4">
+            <!-- Logo / Site Name -->
+            <div class="text-xl font-bold text-white">Delhite Help</div>
+
+            <!-- Hamburger (Mobile) -->
+            <div class="md:hidden ml-auto">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div>
+                <ul class="flex-wrap text-amber-50 space-x-4 hidden md:flex">
+                    <li><a href="#Home" class="hover:text-gray-300 cursor-pointer">Home</a></li>
+                    <li><a href="#Search" class="hover:text-gray-300 cursor-pointer">Search</a></li>
+                    <li><a href="#Metro" class="hover:text-gray-300 cursor-pointer">Metro</a></li>
+                    <li><a href="#Bus" class="hover:text-gray-300 cursor-pointer">Bus</a></li>
+                    <li><a href="#Developer" class="hover:text-gray-300 cursor-pointer">Developer</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- Side Panel (Mobile Menu) -->
+        <div id="side-panel"
+            class="opacity-75 fixed top-0 left-0 w-40 h-full bg-gray-700 text-white transform -translate-x-full transition-transform duration-300 z-50">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <span class="text-xl font-bold">Menu</span>
+                <button id="close-btn" class="focus:outline-none text-white text-2xl">&times;</button>
+            </div>
+            <ul class="p-8 space-y-4">
+                <li><a href="#Home" class="hover:text-gray-400 transition-colors duration-600">Home</a></li>
+                <li><a href="#Search" class="hover:text-gray-400 transition-colors duration-600">Search</a></li>
+                <li><a href="#Metro" class="hover:text-gray-400 transition-colors duration-600">Metro</a></li>
+                <li><a href="#Bus" class="hover:text-gray-400 transition-colors duration-600">Bus</a></li>
+                <li><a href="#Developer" class="hover:text-gray-400 transition-colors duration-600">Developer</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40 transition-opacity duration-300"></div>
+
+    </header>
+    <div class="h-screen bg-[url('/Asset/Images/temp_Wallpaper.jpg')] bg-cover bg-center">
+        <h1 class="text-white text-6xl font-bold text-center pt-20 shadow-lg">
+            Welcome to Delhi Travelling Buddy
+        </h1>
+    </div>
+
+</body>
+
+
+<footer class="bg-black">
+    <div class="text-amber-50 flex justify-center">
+        Made with ♥ by Anjana
+    </div>
+</footer>
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidePanel = document.getElementById('side-panel');
+    const overlay = document.getElementById('overlay');
+
+    menuBtn.addEventListener('click', () => {
+        sidePanel.classList.remove('-translate-x-full'); // show panel
+        overlay.classList.remove('hidden'); // show overlay
+        menuBtn.classList.add('hidden'); // hide hamburger
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidePanel.classList.add('-translate-x-full'); // hide panel
+        overlay.classList.add('hidden'); // hide overlay
+        menuBtn.classList.remove('hidden'); // show hamburger again
+    });
+
+    overlay.addEventListener('click', () => {
+        sidePanel.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+        menuBtn.classList.remove('hidden'); // also show hamburger if overlay clicked
+    });
+
+</script>
+
+</html>
